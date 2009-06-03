@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: backtrace
+Description: A c++ library which lets you retrieve a call stack at runtime
+URL: http://github.com/dgoncharov/backtrace 
+Version: @VERSION@
+Requires:
+Libs: -L${libdir} -lbacktrace -lboost_regex @LDFLAGS@ @LIBS@
+Libs.private: @LIBBACKTRACE_LIBS@ @LIBS@
+Cflags: -I${includedir} -rdynamic
+
+
