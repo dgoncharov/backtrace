@@ -8,12 +8,12 @@
 #include <vector>
 #include <string>
 
-namespace callstack
+namespace btrace
 {
 std::vector<void*> backtrace(int depth);
 std::vector<std::string> symbols(std::vector<void*> const& bt);
 std::vector<std::string> demangle(std::vector<std::string> const& bt);
-} // namespace callstack
+} // namespace btrace
 
 #endif // BACKTRACE_HPP
 

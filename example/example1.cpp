@@ -19,15 +19,15 @@ void print_bt(void)
     typedef std::vector<std::string> symbols_t;
 
     cout << "addresses:\n" << endl;
-    backtrace_t const bt = callstack::backtrace(100);
+    backtrace_t const bt = btrace::backtrace(100);
     std::copy(bt.begin(), bt.end(), std::ostream_iterator<void*>(cout, "\n"));
 
     cout << "symbols:\n" << endl;
-    symbols_t const sym = callstack::symbols(bt);
+    symbols_t const sym = btrace::symbols(bt);
     std::copy(sym.begin(), sym.end(), std::ostream_iterator<std::string>(cout, "\n"));
 
     cout << "demangled:\n" << endl;
-    symbols_t const demangled = callstack::demangle(sym);
+    symbols_t const demangled = btrace::demangle(sym);
     std::copy(demangled.begin(), demangled.end(), std::ostream_iterator<std::string>(cout, "\n"));
 }
 

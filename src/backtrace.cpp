@@ -19,7 +19,7 @@
 #include <boost/regex.hpp>
 #include <backtrace.hpp>
 
-namespace callstack
+namespace btrace
 {
 using std::vector;
 using std::string;
@@ -78,5 +78,5 @@ vector<string> demangle(vector<string> const& bt)
 #endif
     return result;
 }
-} // namespace callstack
+} // namespace btrace
 
