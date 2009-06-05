@@ -4,7 +4,7 @@
 AC_PREREQ([2.63])
 AC_INIT([], [], [dgoncharov@github.com])
 AM_INIT_AUTOMAKE([libbacktrace], ["0.1.0"])
-AC_CONFIG_SRCDIR([backtrace.hpp])
+AC_CONFIG_SRCDIR([include/backtrace/backtrace.hpp])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
@@ -39,7 +39,7 @@ AH_TOP([
 AH_BOTTOM([#endif /* CONFIG_H */])
 CXXFLAGS="$CXXFLAGS -include config.h"
 
-AC_CONFIG_FILES([Makefile src/Makefile libbacktrace.pc])
+AC_CONFIG_FILES([Makefile src/Makefile include/Makefile include/backtrace/Makefile libbacktrace.pc])
 
 AC_OUTPUT
 

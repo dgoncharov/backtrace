@@ -17,7 +17,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/regex.hpp>
-#include <backtrace.hpp>
+#include <backtrace/backtrace.hpp>
 
 namespace btrace
 {
