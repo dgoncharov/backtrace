@@ -37,7 +37,7 @@ AC_HELP_STRING(
     boost_pathset=no)
 
 if test $boost_pathset = yes ; then
-    CXXFLAGS="$CXXFLAGS -I$with_boost/include"
+    CPPFLAGS="$CPPFLAGS -I$with_boost/include"
     LDFLAGS="$LDFLAGS -L$with_boost/lib"
 fi
 
