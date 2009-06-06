@@ -21,7 +21,22 @@ AC_SUBST(LIBTOOL_DEPS)
 AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for header files.
-AC_CHECK_HEADERS([unistd.h execinfo.h cxxabi.h])
+AC_ARG_WITH(execinfo,
+AC_HELP_STRING(
+    [--with-execinfo=prefix],
+    [execinfo.h install directory]),
+    execinfo_pathset=yes,
+    execinfo_pathset=no)
+
+if test $execinfo_pathset = yes ; then
+    CPPFLAGS="$CPPFLAGS -I$with_execinfo/include"
+fi
+
+AC_CHECK_HEADERS([ \
+    execinfo.h],,
+    AC_MSG_ERROR([You need to have execinfo.h installed]))
+
+AC_CHECK_HEADERS([cxxabi.h])
 
 AC_CHECK_HEADERS([\
     string vector algorithm],,
