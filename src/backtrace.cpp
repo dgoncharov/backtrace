@@ -2,13 +2,13 @@
 // Use, modification, and distribution is subject to the BSD license
 // http://www.opensource.org/licenses/bsd-license.php
 
-#ifdef unix
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-#ifdef __GLIBC__
+#ifdef HAVE_EXECINFO_H
 #include <execinfo.h>
 #endif
-#ifdef __GNUC__
+#ifdef HAVE_CXXABI_H
 #include <cxxabi.h>
 #endif
 #include <string>
@@ -27,7 +27,7 @@ using std::string;
 vector<void*> backtrace(int depth)
 {
     vector<void*> bt(depth);
-#ifdef __GLIBC__
+#ifdef HAVE_EXECINFO_H
     int const n = ::backtrace(&bt[0], bt.size());
     bt.resize(n);
 #endif
@@ -37,7 +37,7 @@ vector<void*> backtrace(int depth)
 vector<string> symbols(vector<void*> const& bt)
 {
     vector<string> result;
-#ifdef __GLIBC__
+#ifdef HAVE_EXECINFO_H
     char** s = ::backtrace_symbols(&bt[0], bt.size());
     if (s)
     {
@@ -52,7 +52,7 @@ vector<string> symbols(vector<void*> const& bt)
 vector<string> demangle(vector<string> const& bt)
 {
     vector<string> result;
-#ifdef __GNUC__
+#ifdef HAVE_CXA_DEMANGLE
     for (vector<string>::const_iterator it = bt.begin(), last = bt.end(); it != last; ++it)
     {
         boost::regex e("\\((.+)\\+0x[0-9A-Fa-f]+\\)");
