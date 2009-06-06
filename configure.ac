@@ -24,22 +24,23 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_ARG_WITH(execinfo,
 AC_HELP_STRING(
     [--with-execinfo=prefix],
-    [execinfo.h install directory]),
+    [execinfo library install directory]),
     execinfo_pathset=yes,
     execinfo_pathset=no)
 
 if test $execinfo_pathset = yes ; then
     CPPFLAGS="$CPPFLAGS -I$with_execinfo/include"
+    LDFLAGS="$LDFLAGS -L$with_execinfo/lib"
 fi
 
 AC_CHECK_HEADERS([ \
     execinfo.h],,
     AC_MSG_ERROR([You need to have execinfo.h installed]))
 
-AC_SEARCH_LIBS([backtrace], [],,
+AC_SEARCH_LIBS([backtrace], [execinfo],,
 	AC_MSG_ERROR([backtrace() function is not available]))
 
-AC_SEARCH_LIBS([backtrace_symbols], [],,
+AC_SEARCH_LIBS([backtrace_symbols], [execinfo],,
 	AC_MSG_ERROR([backtrace_symbols() function is not available]))
 
 AC_CHECK_HEADERS([cxxabi.h])
