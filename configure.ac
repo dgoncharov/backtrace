@@ -45,7 +45,7 @@ AC_SEARCH_LIBS([backtrace_symbols], [],,
 AC_CHECK_HEADERS([cxxabi.h])
 
 AC_SEARCH_LIBS([__cxa_demangle], [],
-	CPPFLAGS="$(CPPFLAGS) -DHAVE_CXA_DEMANGLE")
+	[CPPFLAGS="$CPPFLAGS -DHAVE_CXA_DEMANGLE"])
 
 AC_CHECK_HEADERS([\
     string vector algorithm],,
@@ -110,7 +110,7 @@ else
     CXXFLAGS="$CXXFLAGS -Wall -Werror"
 fi
 
-AC_CONFIG_FILES([Makefile src/Makefile include/Makefile include/backtrace/Makefile libbacktrace.pc])
+AC_CONFIG_FILES([Makefile src/Makefile include/Makefile include/backtrace/Makefile libbacktrace.pc example/Makefile])
 
 AC_OUTPUT
 

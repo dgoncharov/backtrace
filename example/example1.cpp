@@ -8,7 +8,7 @@
 #include <iostream>
 #include <iterator>
 #include <boost/lexical_cast.hpp>
-#include <backtrace.hpp>
+#include <backtrace/backtrace.hpp>
 
 using std::cout;
 using std::endl;
@@ -43,7 +43,7 @@ int main(int argc, char const* argv[])
 {
     if (argc != 2)
     {
-        std::cerr << "usage: " << argv[0] << " numcalls" << endl;
+        std::cerr << "usage: " << argv[0] << " ncalls" << endl;
         return 1;
     }
 
