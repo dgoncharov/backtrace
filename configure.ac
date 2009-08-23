@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.63])
+AC_PREREQ([2.62])
 AC_INIT([], [], [dgoncharov@users.sourceforge.net])
 AM_INIT_AUTOMAKE([libbacktrace], ["0.1.0"])
 AC_CONFIG_SRCDIR([include/backtrace/backtrace.hpp])
