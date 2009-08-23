@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT([], [], [dgoncharov@github.com])
+AC_INIT([], [], [dgoncharov@users.sourceforge.net])
 AM_INIT_AUTOMAKE([libbacktrace], ["0.1.0"])
 AC_CONFIG_SRCDIR([include/backtrace/backtrace.hpp])
 AC_CONFIG_HEADERS([config.h])
@@ -45,8 +45,8 @@ AC_SEARCH_LIBS([backtrace_symbols], [execinfo],,
 
 AC_CHECK_HEADERS([cxxabi.h])
 
-AC_SEARCH_LIBS([__cxa_demangle], [],
-	[CPPFLAGS="$CPPFLAGS -DHAVE_CXA_DEMANGLE"])
+AC_SEARCH_LIBS([__cxa_demangle], [stdc++],
+	[AC_DEFINE(HAVE_CXA_DEMANGLE,,[__cxa_demangle is available])])
 
 AC_CHECK_HEADERS([\
     string vector algorithm],,
